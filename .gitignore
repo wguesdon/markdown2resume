@@ -4,6 +4,7 @@ outputs/*
 !outputs/example_resume.*
 !outputs/example_*_report.md
 !outputs/example_*_analysis.md
+private/
 __pycache__/
 *.pyc
 .venv/
