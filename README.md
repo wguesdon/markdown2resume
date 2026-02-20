@@ -9,6 +9,7 @@ A toolkit for converting markdown resumes to professional, ATS-friendly formats 
 - **AI Typo Checker** - LLM-powered proofreading via OpenRouter
 - **Keyword Comparison** - NLTK-based keyword matching (no API key needed)
 - **AI Job Fit Analysis** - Comprehensive fit scoring and suggestions via OpenRouter
+- **ATS Compliance Checker** - Verify generated PDF/DOCX files pass ATS checks
 
 ## Setup
 
@@ -71,6 +72,12 @@ uv run python analyze_job_fit.py data/example_resume.md data/example_job_offer.m
 uv run python analyze_job_fit.py data/example_resume.md data/example_job_offer.md -m openai/gpt-4.1
 ```
 
+### Check ATS compliance (no API key needed)
+
+```bash
+uv run python check_ats.py outputs/example_resume.pdf outputs/example_resume.docx
+```
+
 ## Configuration
 
 ### Environment variables
@@ -96,6 +103,7 @@ markdown2resume/
 ├── check_typos.py          # LLM-powered proofreading
 ├── compare_to_job.py       # NLTK keyword matching
 ├── analyze_job_fit.py      # LLM-powered job fit analysis
+├── check_ats.py            # ATS compliance checker for PDF/DOCX
 ├── data/                   # Input markdown files
 │   ├── example_resume.md
 │   └── example_job_offer.md
