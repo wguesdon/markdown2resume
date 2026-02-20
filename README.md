@@ -85,7 +85,9 @@ uv run python check_ats.py outputs/example_resume.pdf outputs/example_resume.doc
 | Variable | Default | Description |
 |---|---|---|
 | `OPENROUTER_API_KEY` | (required for AI tools) | Your OpenRouter API key |
-| `OPENROUTER_MODEL` | `anthropic/claude-sonnet-4` | Default model for AI analysis |
+| `OPENROUTER_MODEL` | `anthropic/claude-sonnet-4` | Fallback model for all AI scripts |
+| `OPENROUTER_MODEL_TYPO` | `google/gemini-2.5-flash` | Model for typo checking |
+| `OPENROUTER_MODEL_JOB_FIT` | `anthropic/claude-opus-4.6` | Model for job fit analysis |
 
 ### CLI flags
 

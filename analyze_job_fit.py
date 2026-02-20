@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 
 load_dotenv()
 
-DEFAULT_MODEL = "anthropic/claude-sonnet-4"
+DEFAULT_MODEL = "anthropic/claude-opus-4.6"
 
 
 def extract_json(text):
@@ -318,7 +318,7 @@ def main():
         print("3. Use --api-key command line option")
         return 1
 
-    model = args.model or os.getenv("OPENROUTER_MODEL", DEFAULT_MODEL)
+    model = args.model or os.getenv("OPENROUTER_MODEL_JOB_FIT") or os.getenv("OPENROUTER_MODEL", DEFAULT_MODEL)
 
     print(f"Analyzing job fit using {model}...")
     print(f"Resume: {args.resume}")
