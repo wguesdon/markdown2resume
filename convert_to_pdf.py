@@ -42,8 +42,8 @@ def create_styled_html(md_content):
     # Strip emojis from HTML content
     html_body = strip_emojis(html_body)
 
-    # Extract and wrap header section (h1 + contact paragraph)
-    header_pattern = r"(<h1>.*?</h1>\s*<p>.*?</p>)"
+    # Extract and wrap header section (h1 + subtitle + contact paragraphs)
+    header_pattern = r"(<h1>.*?</h1>(?:\s*<p>.*?</p>){1,2})"
 
     def wrap_header(match):
         return f'<div class="header-box">{match.group(1)}</div>'
@@ -70,9 +70,9 @@ def create_styled_html(md_content):
                 padding: 0;
             }}
 
-            /* Header container - simple bottom border for ATS */
+            /* Header container with border box */
             .header-box {{
-                border-bottom: 1px solid #000;
+                border: 2px solid #000;
                 background-color: #fff;
                 padding: 8px 12px;
                 margin-bottom: 10px;
@@ -150,7 +150,7 @@ def create_styled_html(md_content):
             }}
 
             ul li {{
-                list-style-type: disc;
+                list-style-type: square;
             }}
 
             /* Links */
