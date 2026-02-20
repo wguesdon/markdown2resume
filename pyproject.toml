@@ -1,0 +1,18 @@
+[project]
+name = "markdown2resume"
+version = "0.1.0"
+description = "Convert markdown resumes to ATS-friendly PDF/DOCX and analyze with AI"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "httpx>=0.28.1",
+    "lxml>=6.0.2",
+    "markdown>=3.10.2",
+    "markdown2>=2.5.4",
+    "nltk>=3.9.2",
+    "openai>=2.21.0",
+    "python-docx>=1.2.0",
+    "python-dotenv>=1.2.1",
+    "weasyprint>=68.1",
+]

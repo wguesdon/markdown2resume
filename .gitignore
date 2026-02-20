@@ -1,0 +1,8 @@
+.env
+outputs/*.pdf
+outputs/*.docx
+outputs/*.md
+!outputs/.gitkeep
+__pycache__/
+*.pyc
+.venv/
