@@ -6,6 +6,7 @@ Uses OpenRouter API for LLM access.
 
 import argparse
 import os
+import re
 import json
 from datetime import datetime
 from dotenv import load_dotenv
@@ -16,6 +17,14 @@ from bs4 import BeautifulSoup
 load_dotenv()
 
 DEFAULT_MODEL = "anthropic/claude-sonnet-4"
+
+
+def extract_json(text):
+    """Extract JSON from a response that may be wrapped in markdown code fences."""
+    match = re.search(r"```(?:json)?\s*\n?(.*?)```", text, re.DOTALL)
+    if match:
+        text = match.group(1).strip()
+    return json.loads(text)
 
 
 def extract_text_from_markdown(md_file):
@@ -115,7 +124,7 @@ RESUME:
             temperature=0.3,
         )
 
-        result = json.loads(response.choices[0].message.content)
+        result = extract_json(response.choices[0].message.content)
         return result
 
     except Exception as e:

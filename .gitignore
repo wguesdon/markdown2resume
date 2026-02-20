@@ -1,8 +1,9 @@
 .env
-outputs/*.pdf
-outputs/*.docx
-outputs/*.md
+outputs/*
 !outputs/.gitkeep
+!outputs/example_resume.*
+!outputs/example_*_report.md
+!outputs/example_*_analysis.md
 __pycache__/
 *.pyc
 .venv/

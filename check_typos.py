@@ -5,6 +5,7 @@ Check for typos in markdown resume using OpenRouter API.
 
 import argparse
 import os
+import re
 import json
 from datetime import datetime
 from dotenv import load_dotenv
@@ -15,6 +16,15 @@ from bs4 import BeautifulSoup
 load_dotenv()
 
 DEFAULT_MODEL = "anthropic/claude-sonnet-4"
+
+
+def extract_json(text):
+    """Extract JSON from a response that may be wrapped in markdown code fences."""
+    # Strip markdown code fences if present
+    match = re.search(r"```(?:json)?\s*\n?(.*?)```", text, re.DOTALL)
+    if match:
+        text = match.group(1).strip()
+    return json.loads(text)
 
 
 def extract_text_from_markdown(md_file):
@@ -119,7 +129,7 @@ Text to analyze:
                 temperature=0.1,
             )
 
-            result = json.loads(response.choices[0].message.content)
+            result = extract_json(response.choices[0].message.content)
 
             if i > 0 and "errors" in result:
                 for error in result["errors"]:
